@@ -1,0 +1,60 @@
+// function submitReview(offerId) {
+//     const reviewText = document.getElementById('offerId').value;
+    
+//     if (currentRating === 0) {
+//         alert('يرجى تحديد التقييم أولاً');
+//         return;
+//     }
+// }
+
+
+// scripts.js
+
+function showDetails(offerId) {
+    const offerDetails = document.getElementById(offerId);
+    if (offerDetails.style.display === "none") {
+        offerDetails.style.display = "block";
+    } else {
+        offerDetails.style.display = "none";
+    }
+}
+
+
+
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // منع إعادة تحميل الصفحة
+
+    // الحصول على بيانات النموذج
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    // عرض رسالة التأكيد
+    // const confirmationMessage = شكرًا لك ${name}! تم حجز موعدك في ${date} الساعة ${time};
+    // document.getElementById('confirmationMessage').innerText = confirmationMessage;
+    alert(`تم إرسال التقييم: ${currentRating} من 5 \nرأيك: ${reviewText}`);
+
+
+    // إعادة تعيين النموذج
+    document.getElementById('bookingForm').reset();
+});
+
+
+
+// انميشن
+
+const sections = document.querySelectorAll(".section");
+
+const handleScroll = () => {
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= window.innerHeight - 100) {
+      section.classList.add("visible");
+    } else {
+      section.classList.remove("visible");
+    }
+  });
+};
+
+window.addEventListener("scroll", handleScroll);
